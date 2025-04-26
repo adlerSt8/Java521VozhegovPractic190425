@@ -3,14 +3,12 @@ import java.util.List;
 
 public class DynamicArray {
     List<Integer> stack = new ArrayList<>();
-    int indexLast = -1;
 
     public DynamicArray() {
     }
 
     public void addInStack(int number) {
         stack.add(number);
-        indexLast++;
     }
 
     public int pop() {
@@ -18,9 +16,7 @@ public class DynamicArray {
             System.out.println("Стек пуст");
             return -1;
         } else {
-            int value = stack.remove(indexLast);
-            indexLast--;
-            return value;
+            return stack.remove(stack.size() - 1);
         }
     }
 
@@ -29,30 +25,23 @@ public class DynamicArray {
             System.out.println("Стек пуст!");
             return -1;
         } else {
-            return stack.get(indexLast);
+            return stack.get(stack.size() - 1);
         }
     }
 
     public int quantityStack() {
-        return indexLast + 1;
+        return stack.size();
     }
 
     public boolean isEmpty() {
-        return indexLast == -1;
-    }
-
-    public boolean isFull() {
-        return indexLast == stack.size();
+        return stack.isEmpty();
     }
 
     public void clearStack() {
         stack.clear();
-        indexLast = -1;
     }
 
     public String toString() {
         return stack.toString();
     }
-
-
 }
